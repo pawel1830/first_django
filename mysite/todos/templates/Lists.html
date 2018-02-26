@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block content %}
+<script type="text/javascript" src="/my_admin/jsi18n/"></script>
+<script type="text/javascript" src="/media/admin/js/core.js"></script>
+
+
+<section id="register">
+  <h2>Add new List</h2>
+  <form method="post"   enctype='multipart/form-data'>
+    {% csrf_token %}
+
+  {{ form.as_p }}
+
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-default"  href="{% url 'index' %}">Cancel</a>
+  </form>
+</section>
+{% endblock %}

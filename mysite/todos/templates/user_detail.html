@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block content %}
+<section id="register">
+  <h2>User information</h2>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Name: {{ user.first_name }}</p>
+    <p>Surname: {{ user.last_name }}</p>
+</section>
+{% endblock %}

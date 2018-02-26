@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	{% block title %}<title>To dos</title>{% endblock %}
+	</head>
+	<body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    {% block sidebar %}
+    <!-- Default navigation in project  -->
+		<nav class="navbar navbar-default navbar-fixed-top  navbar-inverse">
+			<ul class="nav navbar-nav navbar-left">
+                {% if not request.user.is_authenticated %}
+                    <li><a class="main-menu" href="{% url 'index' %}">To Do</a></li>
+                {% else %}
+					<li><a class="main-menu" href="{% url 'index' %}">To Do</a></li>
+                    {% if todos_list %}
+                        <li><a class="btn-md btn-block btn-mine main-menu" href="{% url 'todo-add' %}"><span class="glyphicon glyphicon-plus"></span> Add new task</a></li>
+                        {% endif %}
+                <li><a class="btn-md btn-block btn-mine main-menu" href="{% url 'list-add' %}"><span class="glyphicon glyphicon-plus"></span> Add new list</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+				{% if not request.user.is_authenticated %}
+                    <li><a  class="btn-md btn-block btn-mine main-menu navbar-left" href="{% url 'login' %}">Sign In</a></li>
+                    <li><a class="btn-md btn-block btn-mine main-menu" href="{% url 'signup' %}">Sign Up</a></li>
+				{% else %}
+                <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
+<!--					<li id="user"><a class="btn-md btn-primary btn-block main-menu" href="{% url 'user' %}">{{ user.username }}</a></li>-->
+                <ul class="dropdown-menu">
+<!--
+                    <li><a class="btn-md btn-block btn-mine main-menu not-active" href="#">Settings</a></li>
+-->
+                    <li role="separator" class="divider"></li>
+                    <li><a class="btn-md btn-block btn-mine main-menu" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+                </li>
+				{% endif %}
+            </ul>
+		</nav>
+
+    {% endblock %}
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

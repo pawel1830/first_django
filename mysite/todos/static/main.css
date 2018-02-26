@@ -1,0 +1,175 @@
+
+
+main#register {
+	margin-top:70px;
+	padding-bottom:70px;
+}
+section#register {
+	width: 350px;
+    margin: 50px auto;
+    border: solid 1px;
+	padding:20px;
+}
+
+footer#register {
+  position: fixed;
+  width: 100%;
+  margin: 0 auto;
+  bottom: 0;
+  height:50px;
+
+
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+ul.errorlist li
+{
+list-style-type: none;
+border: 2px solid red;
+border-radius: 10px;
+padding-left: 10px;
+background-color:#dc3545;
+}
+
+figcaption {
+
+    padding-bottom:8px;
+}
+.navbar-right {
+margin:0 !important;
+}
+
+.list {
+padding: 30px;
+display: inline;
+border: 1px;
+}
+
+.floating-box {
+    float: left;
+    resize: both;
+    overflow: hidden;
+    min-width:300px;
+    position: relative;
+    margin: 10px;
+    border: 3px solid #888;
+    border-radius: 7px;
+    min-height:300px;
+}
+
+main {
+display: block;
+text-align: center;
+padding: 14px 16px;
+}
+
+body {
+    padding-top: 70px;
+}
+
+.task {
+margin: 5px;
+/*list-style-type: none;
+border: 2px solid #999;
+border-radius: 10px;
+padding-left: 10px;
+margin: 10px;
+background-color:#dcb435;
+width: 300px;
+float: left;*/
+}
+
+.delete {
+float:right;
+font-size: 20px;
+
+cursor:pointer;
+display: inline-block;
+line-height: 0px;
+    padding: 11px 3px;
+}
+
+.delete-task{
+
+    margin-top:-14px;
+    margin-right:-14px;
+
+}
+
+.delete-list {
+    margin-top:-15px;
+    margin-right:-15px;
+}
+
+.list-head {
+color:#ccc;
+text-decoration:none;
+margin: 0 0 10px;
+font-size:18px;
+}
+.list-head:hover {
+color: white;
+text-decoration:none;
+
+}
+
+.glyphicon-delete {
+font-weight: 500 !important;
+font-size: 25px;
+color: #444;
+}
+
+.glyphicon-delete:hover {
+
+font-size: 27px;
+color: #000;
+}
+
+.header {
+font-size: 18px;
+
+}
+.task-head  {
+
+font-size: 16px;
+font-weight: bold;
+
+}
+.task-head:hover {
+text-decoration:none;
+}
+
+.add-button {
+position: absolute;
+left: 10px;
+bottom: 10px;
+}
+.task-list {
+margin-bottom: 50px !important;
+}
+.task_detail {
+	max-width: 700px;
+	min-width:300px;
+    margin: 50px auto;
+    border: solid 1px;
+	padding:20px;
+}
+.task_detail img {
+max-width:650px;
+}

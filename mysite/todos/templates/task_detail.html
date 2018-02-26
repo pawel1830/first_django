@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block content %}
+
+<section class="task_detail">
+  <h2>Task Details</h2>
+ <div>
+    <p>Title: {{ object.title }}</p>
+    {% if object.details %}
+    <p>Details: {{ object.details }}</p>
+    {% endif %}
+    {% if object.image %}
+  <a href="{{ object.image.url }}"><img src="{{ object.image.url }}"></a>
+    {% endif %}
+ </div>
+ <hr>
+ <div>
+ <a class="btn btn-primary" href="{% url 'todo-edit' pk=object.id %}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+ <a class="btn btn-danger"  href="{% url 'todo-delete' pk=object.id %}"><span class="glyphicon glyphicon-remove"></span>Remove</a>
+ </div>
+</section>
+
+
+{% endblock %}

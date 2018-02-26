@@ -1,0 +1,65 @@
+<form id="FormDelete" action="" method="post">{% csrf_token %}
+
+</form>
+<div class="jconfirm-box jconfirm-hilight-shake jconfirm-type-default jconfirm-type-animated" id="dialog">
+<p>Are you sure you want to delete?</p>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
+<script type="text/javascript">
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+ $(document).ready(function() {
+
+        var csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            crossDomain: false, // obviates need for sameOrigin test
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type)) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+
+        $('#dialog').dialog({
+        modal: true,
+        buttons: {
+            "Confirm": function(e) {
+                $(this).dialog('close');
+                $('#FormDelete').submit();
+
+
+            },
+            "Cancel": function() {
+                $(this).dialog('close');
+                window.location.href = "{% url 'index' %}";
+            }
+        }
+    });
+
+
+        });
+</script>

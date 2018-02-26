@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+{% if request.user.is_authenticated %}
+    {% if todos_list %}
+
+        {% for l in todos_list %}
+        <section  class="floating-box">
+            <div class="list-group task-list">
+                <article class="list-group-item active">
+                    <a class="list-head" href="{% url 'list-edit' pk=l.id %}">{{l.title}}</a>
+                    <a class="delete delete-list"  href="{% url 'list-delete' pk=l.id %}"><span class="glyphicon glyphicon-remove glyphicon-delete"></span></a>
+                </article>
+
+                {% for t in l.list_task_r.all %}
+
+                    <article class="task list-group-item">
+
+                        <a class="task-head" href="{% url 'todo-info' pk=t.id %}">{{t.title}}</a>
+                        <a class="delete delete-task"  href="{% url 'todo-delete' pk=t.id %}"><span class="glyphicon glyphicon-remove"></span></a>
+
+                        <p style="margin-top:10px">{{t.details}}</p>
+                        {% if t.image %}
+                        <img width="250px" src="{{ t.image.url }}">
+                        {% endif %}
+
+                    </article>
+
+
+                {% endfor %}
+
+            </div>
+<a class="btn btn-md btn-success add-button" href="{% url 'list-add-task' title=l.title %}">Add Task</a>
+        </section>
+        {% endfor %}
+
+    {% endif %}
+
+
+{% endif %}
+
+{% endblock %}
